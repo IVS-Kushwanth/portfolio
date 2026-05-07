@@ -68,8 +68,110 @@ const initNavigationLinks = () => {
     }, { passive: true });
 };
 
+const initScrollReveal = () => {
+    const revealItems = document.querySelectorAll(
+        '.reveal-up, .bento-card, .skill-box, .project-card, .resume-card, .social-card'
+    );
+
+    revealItems.forEach((item, index) => {
+        item.style.setProperty('--reveal-delay', `${Math.min(index % 6, 5) * 0.08}s`);
+    });
+
+    if (!('IntersectionObserver' in window)) {
+        revealItems.forEach(item => item.classList.add('is-visible'));
+        return;
+    }
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.16,
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealItems.forEach(item => revealObserver.observe(item));
+};
+
+const initScrollProgress = () => {
+    const progressBar = document.getElementById('scrollProgress');
+
+    if (!progressBar) {
+        return;
+    }
+
+    let ticking = false;
+
+    const updateProgress = () => {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+        progressBar.style.setProperty('--scroll-progress', `${Math.min(progress, 100)}%`);
+        ticking = false;
+    };
+
+    const requestUpdate = () => {
+        if (!ticking) {
+            window.requestAnimationFrame(updateProgress);
+            ticking = true;
+        }
+    };
+
+    updateProgress();
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+};
+
+const initHeroSpotlight = () => {
+    const hero = document.querySelector('.hero-modern');
+
+    if (!hero || window.matchMedia('(pointer: coarse)').matches) {
+        return;
+    }
+
+    let ticking = false;
+    let nextX = 50;
+    let nextY = 45;
+
+    const updateSpotlight = () => {
+        hero.style.setProperty('--spotlight-x', `${nextX}px`);
+        hero.style.setProperty('--spotlight-y', `${nextY}px`);
+        ticking = false;
+    };
+
+    const requestSpotlight = event => {
+        const rect = hero.getBoundingClientRect();
+        nextX = event.clientX - rect.left;
+        nextY = event.clientY - rect.top;
+
+        if (!ticking) {
+            window.requestAnimationFrame(updateSpotlight);
+            ticking = true;
+        }
+    };
+
+    hero.addEventListener('pointerenter', event => {
+        hero.classList.add('is-spotlight-active');
+        requestSpotlight(event);
+    });
+
+    hero.addEventListener('pointermove', requestSpotlight);
+
+    hero.addEventListener('pointerleave', () => {
+        hero.classList.remove('is-spotlight-active');
+        hero.style.setProperty('--spotlight-x', '50%');
+        hero.style.setProperty('--spotlight-y', '45%');
+    });
+};
+
 const initializePortfolio = () => {
     initNavigationLinks();
+    initScrollReveal();
+    initScrollProgress();
+    initHeroSpotlight();
 };
 
 if (document.readyState === 'loading') {
@@ -78,4 +180,4 @@ if (document.readyState === 'loading') {
     initializePortfolio();
 }
 
-console.log('%c? Portfolio ready: blue-black theme loaded.', 'font-size: 14px; color: #0f62fe;');
+console.log('%cPortfolio ready: spotlight hero theme loaded.', 'font-size: 14px; color: #c65321;');

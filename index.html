@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kushwanth I V S | Web Developer & CS Student</title>
-    <meta name="description" content="Kushwanth I V S — Computer Science student and full-stack web developer from Vizianagaram, Andhra Pradesh. Skilled in React, Node.js, MongoDB, and more.">
+    <title>Kushwanth I V S | Full-Stack Web Developer</title>
+    <meta name="description" content="Kushwanth I V S - Computer Science student and full-stack web developer from Vizianagaram, Andhra Pradesh. Skilled in React, Node.js, MongoDB, and more.">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
-    <!-- ===== PARTICLE CANVAS ===== -->
-    <canvas id="particleCanvas"></canvas>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
     <!-- ===== Navigation Bar ===== -->
     <nav class="navbar" id="navbar">
@@ -37,35 +35,67 @@
         </div>
     </nav>
 
-    <!-- ===== Modern Hero Section ===== -->
+    <!-- ===== Hero Section ===== -->
     <section id="home" class="hero-modern">
-        <div class="hero-background"></div>
         <div class="container hero-container">
             <div class="hero-content-wrapper">
-                <div class="hero-badge-modern">
-                    <span class="status-dot"></span>
-                    <span class="status-text">Available for Opportunities</span>
+                <div class="hero-copy">
+                    <div class="hero-badge-modern">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Available for internships and projects</span>
+                    </div>
+                    <h1 class="hero-heading">
+                        Designing and building web apps that feel effortless.
+                    </h1>
+                    <p class="hero-description">
+                        I'm Kushwanth I V S, a CSE student focused on full-stack development, AI/ML fundamentals, React, Node.js, databases, and reliable user-focused interfaces.
+                    </p>
+                    <div class="hero-btn-group">
+                        <a href="#projects" class="btn-primary">
+                            View Projects <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="mailto:ivskushwanth@gmail.com" class="btn-secondary">
+                            Contact Me
+                        </a>
+                    </div>
                 </div>
-                <h1 class="hero-heading">
-                    Hi, I'm <br> <span class="text-gradient">Kushwanth I V S</span>
-                </h1>
-                <p class="hero-description">
-                    A passionate Computer Science student and Full-Stack Developer crafting scalable web experiences with clean architecture and modern design.
-                </p>
-                <div class="hero-btn-group">
-                    <a href="#projects" class="btn-primary">
-                        View Projects <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="#skills" class="btn-secondary">
-                        Technical Skills
-                    </a>
-                </div>
-                <div class="hero-tech-stack">
-                    <span>Powered by</span>
-                    <i class="fab fa-react"></i>
-                    <i class="fab fa-node-js"></i>
-                    <i class="fas fa-database"></i>
-                    <i class="fab fa-js"></i>
+                <div class="hero-visual" aria-label="Developer portfolio dashboard">
+                    <div class="visual-topline">
+                        <span>Portfolio Console</span>
+                        <strong>Live</strong>
+                    </div>
+                    <div class="booking-panel">
+                        <div class="assistant-card">
+                            <span class="assistant-avatar">K</span>
+                            <div>
+                                <strong>Kushwanth I V S</strong>
+                                <p>Full-stack developer</p>
+                            </div>
+                        </div>
+                        <div class="schedule-card">
+                            <div>
+                                <span>Current Focus</span>
+                                <strong>React + Node apps</strong>
+                            </div>
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="schedule-card accent-card">
+                            <div>
+                                <span>Availability</span>
+                                <strong>Open for internships</strong>
+                            </div>
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="mini-metrics">
+                            <span><strong>4</strong> Projects</span>
+                            <span><strong>8+</strong> Skills</span>
+                            <span><strong>24/7</strong> Learning</span>
+                        </div>
+                    </div>
+                    <div class="visual-code">
+                        <span>const focus = "full-stack apps";</span>
+                        <span>build.cleanUI().shipReliableAPIs();</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -217,6 +247,22 @@
                         <span class="skill-pill">C++ (OOP)</span>
                     </div>
                 </div>
+
+                <!-- AI & ML -->
+                <div class="skill-box">
+                    <div class="skill-box-header">
+                        <div class="skill-box-icon"><i class="fas fa-robot"></i></div>
+                        <h3>AI &amp; ML</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-pill">Machine Learning Basics</span>
+                        <span class="skill-pill">Python for AI</span>
+                        <span class="skill-pill">NumPy</span>
+                        <span class="skill-pill">Pandas</span>
+                        <span class="skill-pill">Scikit-learn</span>
+                        <span class="skill-pill">AI Tools &amp; Prompting</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -335,7 +381,7 @@
                         <li>Experienced with Git-based workflows</li>
                         <li>Comfortable building full-stack solutions</li>
                     </ul>
-                    <a href="resume.html" class="project-link" id="openResume">
+                    <a href="AI_resume.pdf" class="project-link" id="openResume" target="_blank" rel="noreferrer">
                         <i class="fas fa-file-alt"></i> Open Full Resume
                     </a>
                 </div>
